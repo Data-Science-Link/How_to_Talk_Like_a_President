@@ -26,13 +26,13 @@ class GeorgeSpider(Spider):
         briefing_urls = [left_path + str(paths) for paths in right_path]
 
     #Assembling the titles for each press briefing
-        titles = response.xpath('//table//td/a/text()').extract()
+        title = response.xpath('//table//td/a/text()').extract()
         
     #Assembiling the dates of each briefing
-        date_text = response.xpath('//table//td[@class="archive-date-cell"]').extract()
+        date_raw = response.xpath('//table//td[@class="archive-date-cell"]').extract()
         date = []
         #If two or more press briefings were held on the same day the date was not appended to the 2nd and 3rd. For loops account for this.
-        for day in date_text:
+        for day in date_raw:
             s = re.search('<td class="archive-date-cell">(.*)<br></td>', day).group(1)
             date.append(s)
 
@@ -40,26 +40,49 @@ class GeorgeSpider(Spider):
             if date[day] == '':
                 date[day] = date[day-1]
 
-    #Writing all gathered data to csv
-        item = GeorgeItem()
-        for i in range(len(briefing_urls)):
-            item['title'] = titles[i]
-            item['date'] = date[i]
-            item['address'] = briefing_urls[i]
-            yield item
+
+        meta = {'title': title, 'date': date, 'address': briefing_urls}
+
+
+        # Yield the requests to the details pages, 
+        # using parse_detail_page function to parse the response.
+        for url in briefing_urls:
+            yield Request(url=url, callback=self.parse_detail_page, meta = meta)
+
+
+    def parse_detail_page(self, response):
+        
+        title = response.meta['title']
+        date = response.meta['date']
+        address = response.meta['address']
 
 
 
-        print('='*50)
-        print(len(briefing_urls))
-        print('='*50)
-        print('='*50)
+    #String manipulation for press briefing text
+        s = ' '.join(response.xpath('//div[@id="news_container"]//text()').extract()) # to make this into a long string...
+        s2 = s.replace("\r"," ").replace("\n"," ").replace("\t"," ").replace("\xa0"," ").replace("--"," ").replace("  "," ").replace("  "," ").replace("  "," ").replace("  "," ")
+        s3 = re.findall(r':[0-5][0-9](.*)', s2)[0][10:]
+        s4 = re.findall(r'(.*)END', s3)[0]
+
+        transcript = s4
+        
+        print("="*50)
+        print(len(title))
+        print("="*50)
         print(len(date))
-        print('='*50)
+        print("="*50)
+        print(len(address))
+        print("="*50)
+        print(len(transcript))
+        print("="*50)
+        print(transcript)
+        print("="*50)
 
-        #for name in titles:
-            #item = GeorgeItem()
-            #item['title'] = name
-            #yield item
-
-
+    # #Writing all gathered data to csv
+    #     item = GeorgeItem()
+    #     for i in range(len(title)):
+    #         item['title'] = title[i]
+    #         item['date'] = date[i]
+    #         item['address'] = address[i]
+    #         yield item
+       
