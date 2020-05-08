@@ -14,4 +14,4 @@ class GeorgeItem(scrapy.Item):
     title = scrapy.Field()
     date = scrapy.Field()
     address = scrapy.Field()
-    #text = scrapy.Field()
+    transcript = scrapy.Field()
