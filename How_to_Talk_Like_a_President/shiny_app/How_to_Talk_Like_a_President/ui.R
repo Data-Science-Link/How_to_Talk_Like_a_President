@@ -44,7 +44,7 @@ dashboardPage(
                                      fluidRow(
                                          column(2, ""),
                                          column(2, sliderInput("geography_slider", sep = "", label = h3("Year of Presidential Term"), min = 0, max = 8, value = c(0,8))),
-                                         column(2, radioButtons("geography_sec_y_axis_radio", label = h3("Secondary Y Axis"), choices = list("None" = 0, "Google Trend" = 1, "S & P 500" = 4, "POTUS Approval" = 3), selected = 0)),
+                                         column(2, radioButtons("geography_sec_y_axis_radio", label = h3("Comparison Graph"), choices = list("Google Trend" = 0, "S & P 500" = 1, "POTUS Approval" = 2), selected = 0)),
                                          #column(2, radioButtons("geography_scale_radio", label = h3("Geographical Scale"), choices = list("Countries" = 0, "States" = 1), selected = 0)),
                                          column(2, selectizeInput(inputId = "country",
                                                                   label = "Country",
@@ -59,7 +59,7 @@ dashboardPage(
                                      fluidRow(
                                          column(1, ""),
                                          column(3, sliderInput("policy_slider", sep = "", label = h3("Year of Presidential Term"), min = 0, max = 8, value = c(0,8))),
-                                         column(2, radioButtons("policy_sec_y_axis_radio", label = h3("Secondary Y Axis"), choices = list("None" = 0, "Google Trend" = 1, "S & P 500" = 4, "POTUS Approval" = 3), selected = 0)),
+                                         column(2, radioButtons("policy_sec_y_axis_radio", label = h3("Comparison Graph"), choices = list("Google Trend" = 0, "S & P 500" = 1, "POTUS Approval" = 2), selected = 0)),
                                          column(3, selectizeInput(inputId = "policy_type",
                                                                   label = "Policy Category",
                                                                   choices = unique(Policy$policy_type),
@@ -70,7 +70,9 @@ dashboardPage(
                                                                   label = "Keyword",
                                                                   choices = unique(Policy$policy)
                                                                   ))
-                                         )
+                                         ),
+                                     plotlyOutput("GG_Policy_Top"),
+                                     plotlyOutput("GG_Policy_Bottom")
                                      ),
                             
                             tabPanel(h3("Metrics"), 
@@ -91,7 +93,7 @@ dashboardPage(
                                      fluidRow(
                                          column(2, ""),
                                          column(3, sliderInput("exploration_slider", sep = "", label = h3("Year of Presidential Term"), min = 0, max = 8, value = c(0,8))),
-                                         column(2, radioButtons("exploration_sec_y_axis_radio", label = h3("Secondary Y Axis"), choices = list("None" = 0, "Google Trend" = 1, "S & P 500" = 4, "POTUS Approval" = 3), selected = 0)),
+                                         column(2, radioButtons("exploration_sec_y_axis_radio", label = h3("Comparison Graph"), choices = list("Google Trend" = 0, "S & P 500" = 1, "POTUS Approval" = 2), selected = 0)),
                                          column(2, textInput("exploration_text", label = h3("Text Input (lowercase)"), value = "Enter text..."))
                                          ),
                                      fluidRow(column(3, verbatimTextOutput("value")))

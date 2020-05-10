@@ -9,9 +9,47 @@ shinyServer(function(input, output, session) {
                       selected = unique(Policy[Policy$policy_type == input$policy_type, 'policy'][1]))
   })
 
-  output$GG_Total_Nation_Summed_Claims<-renderPlotly({
-      ggplotly()
+  output$GG_Policy_Top<-renderPlotly({
+    george_mod = 
+      george %>% 
+      select(., month_year, term_year_bush, !!input$keyword) %>% 
+      filter(., term_year_bush >= input$policy_slider[1], term_year_bush <= input$policy_slider[2]) %>% 
+      drop_na()
+    
+    ggplot() +
+      geom_path(data = george_mod, aes_string(x = 'month_year', y = input$keyword))
+    
+    ggplotly()
     })
+  
+  output$GG_Policy_Bottom<-renderPlotly({
+    george_mod = 
+      george %>% 
+      select(., month_year, term_year_bush) %>% 
+      filter(., term_year_bush >= input$policy_slider[1], term_year_bush <= input$policy_slider[2]) %>% 
+      drop_na()
+    
+    auxiliary_mod = 
+      auxiliary %>% 
+      select(., month_year, term_year_bush, !!input$keyword) %>% 
+      filter(., term_year_bush >= input$policy_slider[1], term_year_bush <= input$policy_slider[2]) %>% 
+      drop_na()
+    
+    ggplot() +
+      geom_path(data = auxiliary_mod, aes_string(x = 'month_year', y = input$keyword)) + 
+      xlim(min(george_mod$month_year), max(george_mod$month_year) )
+    
+    ggplotly()
+  })
+  
+  
+  
+  
+  
+  
+  
+  
+  
   
   output$GG_Accumulation_for_Nation<-renderPlotly({
       ggplotly(

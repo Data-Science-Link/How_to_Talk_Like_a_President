@@ -11,7 +11,25 @@ title_text_sz = 18
 axis_text_sz = 10
 axis_title_sz = 12
 
+george = read.csv(file = '/Users/michaellink/Desktop/__NYCDSA/_Projects/web_scraping/presidents/How_to_Talk_Like_a_President/shiny_app/How_to_Talk_Like_a_President/george.csv', header = TRUE)
+colnames(george) = gsub('\\.', '_', colnames(george))
+
+auxiliary = read.csv(file = '/Users/michaellink/Desktop/__NYCDSA/_Projects/web_scraping/presidents/How_to_Talk_Like_a_President/shiny_app/How_to_Talk_Like_a_President/auxiliary.csv', header = TRUE)
+colnames(auxiliary) = gsub('\\.', '_', colnames(auxiliary))
+
+george = 
+  george %>% 
+  mutate(., month_year = as.Date(paste(george$month_year,"-01",sep="")))
+
+auxiliary = 
+  auxiliary %>% 
+  mutate(., month_year = as.Date(paste(auxiliary$month_year,"-01",sep=""))) %>% 
+  mutate(., date_time = as.Date(auxiliary$date_time))
+
+
 load(file = "processed_data.Rdata")
+Policy$policy = tolower(gsub(' ', '_', Policy$policy))
+
 #Policy_Names = list("Criminal Justice", "Culture and Society", "Economic Affairs", "Education", "Environment", "Government Operations", "Social Welfare", "Foreign Affairs and National Security")
 # Policy = read.csv(file = '/Users/michaellink/Desktop/__NYCDSA/_Projects/web_scraping/presidents/How_to_Talk_Like_a_President/_data/policies/policy_names.csv')
 # State_Names = read.csv(file = '/Users/michaellink/Desktop/__NYCDSA/_Projects/web_scraping/presidents/How_to_Talk_Like_a_President/_data/states.csv')
