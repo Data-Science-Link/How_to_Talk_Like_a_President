@@ -11,15 +11,11 @@ title_text_sz = 18
 axis_text_sz = 10
 axis_title_sz = 12
 
-alpha = 2.115946e+09
-beta = 7.445744e-02
-theta = -4.923348e+09
-
-#load(file = "processed_data.Rdata")
+load(file = "processed_data.Rdata")
 #Policy_Names = list("Criminal Justice", "Culture and Society", "Economic Affairs", "Education", "Environment", "Government Operations", "Social Welfare", "Foreign Affairs and National Security")
-Policy = read.csv(file = '/Users/michaellink/Desktop/__NYCDSA/_Projects/web_scraping/presidents/How_to_Talk_Like_a_President/_data/policies/policy_names.csv')
-State_Names = read.csv(file = '/Users/michaellink/Desktop/__NYCDSA/_Projects/web_scraping/presidents/How_to_Talk_Like_a_President/_data/states.csv')
-Country_Names = read_csv(file = '/Users/michaellink/Desktop/__NYCDSA/_Projects/web_scraping/presidents/How_to_Talk_Like_a_President/_data/list_of_countries/country_names.csv')
+# Policy = read.csv(file = '/Users/michaellink/Desktop/__NYCDSA/_Projects/web_scraping/presidents/How_to_Talk_Like_a_President/_data/policies/policy_names.csv')
+# State_Names = read.csv(file = '/Users/michaellink/Desktop/__NYCDSA/_Projects/web_scraping/presidents/How_to_Talk_Like_a_President/_data/states.csv')
+# Country_Names = read_csv(file = '/Users/michaellink/Desktop/__NYCDSA/_Projects/web_scraping/presidents/How_to_Talk_Like_a_President/_data/list_of_countries/country_names.csv')
 
 #Policy_Type = levels(as.factor(Policy$policy_type))
 

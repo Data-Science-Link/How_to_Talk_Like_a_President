@@ -42,14 +42,14 @@ dashboardPage(
                             
                             tabPanel(h3("Geography"), 
                                      fluidRow(
-                                         column(1, ""),
-                                         column(3, sliderInput("geography_slider", sep = "", label = h3("Year of Presidential Term"), min = 0, max = 8, value = c(0,8))),
+                                         column(2, ""),
+                                         column(2, sliderInput("geography_slider", sep = "", label = h3("Year of Presidential Term"), min = 0, max = 8, value = c(0,8))),
                                          column(2, radioButtons("geography_sec_y_axis_radio", label = h3("Secondary Y Axis"), choices = list("None" = 0, "Google Trend" = 1, "S & P 500" = 4, "POTUS Approval" = 3), selected = 0)),
-                                         column(2, radioButtons("geography_scale_radio", label = h3("Geographical Scale"), choices = list("Countries" = 0, "States" = 1), selected = 0)),
-                                         column(1, selectizeInput(inputId = "country",
+                                         #column(2, radioButtons("geography_scale_radio", label = h3("Geographical Scale"), choices = list("Countries" = 0, "States" = 1), selected = 0)),
+                                         column(2, selectizeInput(inputId = "country",
                                                                   label = "Country",
                                                                   choices = unique(Country_Names$Country_Name))),
-                                         column(1, selectizeInput(inputId = "state",
+                                         column(2, selectizeInput(inputId = "state",
                                                                   label = "State",
                                                                   choices = unique(State_Names$State.Name)))
                                          )
@@ -66,11 +66,11 @@ dashboardPage(
                                                                   selected = unique(Policy$policy_type)[3]
                                                                   )),
                                          #column(3, verbatimTextOutput("value")),
-                                         column(2, selectizeInput(inputId = "keyword",
+                                         column(3, selectizeInput(inputId = "keyword",
                                                                   label = "Keyword",
                                                                   choices = unique(Policy$policy)
                                                                   ))
-                                     )
+                                         )
                                      ),
                             
                             tabPanel(h3("Metrics"), 
@@ -99,6 +99,7 @@ dashboardPage(
                             )
                         )
                     ),
+            
             tabItem(tabName = 'data',
                     fluidRow(
                         tabBox(
@@ -113,26 +114,21 @@ dashboardPage(
                                      tags$a(href="https://obamawhitehouse.archives.gov/briefing-room/press-briefings", h4("https://obamawhitehouse.archives.gov/briefing-room/press-briefings"))
                                      ),
                             tabPanel(h3("Word Count"), 
-                                     h4(),
-                                     box(DT::dataTableOutput("table_cleaned"), width = 12)),
+                                     h4()),
                             tabPanel(h3("Statistics"), 
-                                     h4(),
-                                     box(DT::dataTableOutput("table_manipulated"), width = 12)),
+                                     h4()),
                             tabPanel(h3("Google Trends"),
                                      h4('Data source: Google Trends'),
-                                     tags$a(href="https://www.google.com/trends", h4("https://www.google.com/trends")),
-                                     br(),
-                                     box(DT::dataTableOutput("table_major_storms"), width = 12)),
+                                     tags$a(href="https://www.google.com/trends", h4("https://www.google.com/trends"))),
                             tabPanel(h3("POTUS Approval"),
                                      h4('Data source: The American Presidency Project'),
-                                     tags$a(href="https://www.presidency.ucsb.edu/statistics/data/presidential-job-approval", h4("https://www.presidency.ucsb.edu/statistics/data/presidential-job-approval")),
+                                     tags$a(href="https://www.presidency.ucsb.edu/statistics/data/presidential-job-approval", h4("https://www.presidency.ucsb.edu/statistics/data/presidential-job-approval"))),
                                      br(),
-                                     box(DT::dataTableOutput("table_major_storms"), width = 12)),
                             tabPanel(h3("S&P 500"),
                                      h4('Data source: Yahoo Finance'),
                                      tags$a(href="https://finance.yahoo.com/quote/%5EGSPC/history?period1=-1325635200&period2=1588896000&interval=1mo&filter=history&frequency=1mo", h4("https://finance.yahoo.com/quote")),
-                                     br(),
-                                     box(DT::dataTableOutput("table_major_storms"), width = 12))
+                                     br()
+                                     )
                             )
                         )
                     ),
