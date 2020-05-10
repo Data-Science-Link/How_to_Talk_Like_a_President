@@ -15,9 +15,12 @@ alpha = 2.115946e+09
 beta = 7.445744e-02
 theta = -4.923348e+09
 
-load(file = "processed_data.Rdata")
+#load(file = "processed_data.Rdata")
 #Policy_Names = list("Criminal Justice", "Culture and Society", "Economic Affairs", "Education", "Environment", "Government Operations", "Social Welfare", "Foreign Affairs and National Security")
 Policy = read.csv(file = '/Users/michaellink/Desktop/__NYCDSA/_Projects/web_scraping/presidents/How_to_Talk_Like_a_President/_data/policies/policy_names.csv')
+State_Names = read.csv(file = '/Users/michaellink/Desktop/__NYCDSA/_Projects/web_scraping/presidents/How_to_Talk_Like_a_President/_data/states.csv')
+Country_Names = read_csv(file = '/Users/michaellink/Desktop/__NYCDSA/_Projects/web_scraping/presidents/How_to_Talk_Like_a_President/_data/list_of_countries/country_names.csv')
+
 #Policy_Type = levels(as.factor(Policy$policy_type))
 
 
@@ -32,7 +35,7 @@ Policy = read.csv(file = '/Users/michaellink/Desktop/__NYCDSA/_Projects/web_scra
 Intro_pt1 = 
   "What do bald eagles and the President of the United States (POTUS) have in common? They both represent the pinnacle of power in the natural and political environments.  Dramatization aside, it is both advantageous and possible to use data science to understand what the POTUS has emphasized over the course of his/her presidency."
 Intro_pt2 = 
-  "The data analyzed herein comes from presidential briefings transcripts. These briefings are conducted by the president’s press secretary and give glimpses into two important topics. First, how has the president responded to circumstantial and uncontrollable events? For instance, how did George W. Bush respond to the attack on the World Trade Centers? Second, what initiatives have been prioritized for a given president by their own volition? For example, Barach Obama chose to prioritize healthcare reform over other policy initiatives."
+  "The data analyzed herein comes from presidential briefings transcripts. These briefings are conducted by the president’s press secretary and give glimpses into two important topics. First, how has the president responded to circumstantial and uncontrollable events? For instance, how did George W. Bush respond to the attack on the World Trade Centers? Second, what initiatives have been prioritized for a given president by their own volition? For example, Barack Obama chose to prioritize healthcare reform over other policy initiatives."
 Intro_pt2_1 = 
   "The employed data science methods are simple."
 Intro_pt2_2 = 
@@ -68,4 +71,6 @@ OUR_STATES_TEXT_pt4 =
   '3. Summed Flood Claims - which cities have the most water on their hands'
 
 Exploration_pt1 = 
-  'I am now giving you the a license to be a practicing Data Scientist! Type in the word or phrases that you are interested in investigating. Are you a Buddhist or Christian? Type in buddha or christ. Are you curious about which press briefings incited the most laughter? Search laughter!'
+  'I am now giving you the a license to be a practicing Data Scientist!' 
+Exploration_pt2 = 
+  'Type in the word or phrases that you are interested in investigating. Are you Buddhist or Christian? Type in buddha or christ. Are you curious about which press briefings incited the most laughter? Search laughter!'

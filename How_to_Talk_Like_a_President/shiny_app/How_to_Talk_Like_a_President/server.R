@@ -7,6 +7,18 @@ shinyServer(function(input, output, session) {
                         choices = unique(Policy[Policy$policy_type == input$policy_type, 'policy']),
                         selected = unique(Policy[Policy$policy_type == input$policy_type, 'policy'][1]))
     })
+  
+    # observe({
+    #   if input$geography_scale_radio == 0:
+    #     updateSelectInput(session, 'region',
+    #                       choices = unique(Policy[Policy$policy_type == input$policy_type, 'policy']),
+    #                       selected = unique(Policy[Policy$policy_type == input$policy_type, 'policy'][1]))
+    #   else:
+    #     updateSelectInput(session, 'region',
+    #                       choices = unique([ , ]),
+    #                       selected = unique([ ,][1]))
+    # 
+    # })
 
   
     output$value <- renderPrint({ 
@@ -16,6 +28,7 @@ shinyServer(function(input, output, session) {
       Policy_Names_Subset[1]
       })
     
+    output$value <- renderPrint({ input$exploration_text })
 
     output$GG_Total_Nation_Summed_Claims<-renderPlotly({
         ggplotly()
