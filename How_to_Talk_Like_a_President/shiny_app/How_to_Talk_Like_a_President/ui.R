@@ -42,7 +42,7 @@ dashboardPage(
                             
                             tabPanel(h4("Geography"), 
                                      fluidRow(
-                                         column(2, ""),
+                                         column(1, ""),
                                          column(2, sliderInput("geography_slider", sep = "", label = h4("Presidential Term Year"), min = 0, max = 8, value = c(0,8))),
                                          column(2, radioButtons("geography_radio", label = h4("Comparison Graph"), choices = list("Google Trend" = 0, "S & P 500" = 1, "POTUS Approval" = 2), selected = 0)),
                                          column(2, radioButtons("geography_scale_radio", label = h4("Geographical Scale"), choices = list("Countries" = 0, "States" = 1), selected = 0)),
@@ -60,7 +60,7 @@ dashboardPage(
                             tabPanel(h4("Policy"),
                                      fluidRow(
                                          column(1, ""),
-                                         column(3, sliderInput("policy_slider", sep = "", label = h4("Presidential Term Year"), min = 0, max = 8, value = c(0,8))),
+                                         column(2, sliderInput("policy_slider", sep = "", label = h4("Presidential Term Year"), min = 0, max = 8, value = c(0,8))),
                                          column(2, radioButtons("policy_radio", label = h4("Comparison Graph"), choices = list("Google Trend" = 0, "S & P 500" = 1, "POTUS Approval" = 2), selected = 0)),
                                          column(3, selectizeInput(inputId = "policy_type",
                                                                   label = "Policy Category",

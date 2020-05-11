@@ -21,4 +21,4 @@ auxiliary =
   mutate(., date_time = as.Date(auxiliary$date_time))
 
 
-# save(Policy, george, auxiliary, State_Names, Country_Names, file = "/Users/michaellink/Desktop/__NYCDSA/_Projects/web_scraping/presidents/How_to_Talk_Like_a_President/shiny_app/How_to_Talk_Like_a_President/processed_data.Rdata")
+# save(Policy, george, auxiliary, State_Names, Country_Names, Google_Table, file = "/Users/michaellink/Desktop/__NYCDSA/_Projects/web_scraping/presidents/How_to_Talk_Like_a_President/shiny_app/How_to_Talk_Like_a_President/processed_data.Rdata")

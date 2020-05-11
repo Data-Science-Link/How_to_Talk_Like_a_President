@@ -12,8 +12,6 @@ axis_text_sz = 10
 axis_title_sz = 12
 
 
-
-
 load(file = "processed_data.Rdata")
 Policy$policy = tolower(gsub(' ', '_', Policy$policy))
 
