@@ -5,8 +5,8 @@ account: data-science-link
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 2275004
-bundleId: 3127683
+bundleId: 3129548
 url: https://data-science-link.shinyapps.io/How_to_Talk_Like_a_President/
-when: 1589117621.37894
+when: 1589163778.70041
 asMultiple: FALSE
 asStatic: FALSE

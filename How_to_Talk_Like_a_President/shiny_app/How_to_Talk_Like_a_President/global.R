@@ -11,20 +11,7 @@ title_text_sz = 18
 axis_text_sz = 10
 axis_title_sz = 12
 
-george = read.csv(file = '/Users/michaellink/Desktop/__NYCDSA/_Projects/web_scraping/presidents/How_to_Talk_Like_a_President/shiny_app/How_to_Talk_Like_a_President/george.csv', header = TRUE)
-colnames(george) = gsub('\\.', '_', colnames(george))
 
-auxiliary = read.csv(file = '/Users/michaellink/Desktop/__NYCDSA/_Projects/web_scraping/presidents/How_to_Talk_Like_a_President/shiny_app/How_to_Talk_Like_a_President/auxiliary.csv', header = TRUE)
-colnames(auxiliary) = gsub('\\.', '_', colnames(auxiliary))
-
-george = 
-  george %>% 
-  mutate(., month_year = as.Date(paste(george$month_year,"-01",sep="")))
-
-auxiliary = 
-  auxiliary %>% 
-  mutate(., month_year = as.Date(paste(auxiliary$month_year,"-01",sep=""))) %>% 
-  mutate(., date_time = as.Date(auxiliary$date_time))
 
 
 load(file = "processed_data.Rdata")
@@ -75,14 +62,7 @@ Metrics_pt3 =
   '2. Average Press Briefing Length - How long were the press briefings?'
 Metrics_pt4 = 
   '3. Average Number of Questions - How many questions were posed by the press?'
-OUR_STATES_TEXT_pt1 = 
-  'This tab offers three metrics:'
-OUR_STATES_TEXT_pt2 = 
-  '1. Accumulated Claims - how much money has been claimed to date'
-OUR_STATES_TEXT_pt3 = 
-  '2. Annual Claims- which years were the most expensive'
-OUR_STATES_TEXT_pt4 = 
-  '3. Summed Flood Claims - which cities have the most water on their hands'
+
 
 Exploration_pt1 = 
   'I am now giving you the a license to be a practicing Data Scientist!' 
