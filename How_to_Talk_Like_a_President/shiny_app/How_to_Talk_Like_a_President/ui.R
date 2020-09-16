@@ -75,31 +75,10 @@ dashboardPage(
                                          ),
                                      plotlyOutput("GG_Policy_Top"),
                                      plotlyOutput("GG_Policy_Bottom")
-                                     ),
-                            
-                            tabPanel(h4("Metrics"), 
-                                     fluidRow(
-                                         column(2, sliderInput("nation_slider", sep = "", label = h4("Presidential Term Year"), min = 0, max = 8, value = c(0,8)))
-                                         ),
-                                     h5(Metrics_pt1),
-                                     h5(Metrics_pt2),
-                                     h5(Metrics_pt3),
-                                     h5(Metrics_pt4)
-                                     ),
-                            
-                            tabPanel(h4("Exploration"),
-                                     h5(Exploration_pt1),
-                                     #br(),
-                                     h5(Exploration_pt2),
-                                     br(),
-                                     fluidRow(
-                                         column(2, ""),
-                                         column(3, sliderInput("exploration_slider", sep = "", label = h4("Presidential Term Year"), min = 0, max = 8, value = c(0,8))),
-                                         column(2, radioButtons("exploration_sec_y_axis_radio", label = h4("Comparison Graph"), choices = list("Google Trend" = 0, "S&P 500" = 1, "POTUS Approval" = 2), selected = 0)),
-                                         column(2, textInput("exploration_text", label = h4("Text Input (lowercase)"), value = "Enter text..."))
-                                         ),
-                                     fluidRow(column(3, verbatimTextOutput("value")))
                                      )
+                            
+                            
+                            
                             )
                         )
                     ),
@@ -144,11 +123,25 @@ dashboardPage(
                             title = "",
                             # The id lets us use input$tabset1 on the server to find the current tab
                             id = "tabset1", width = '100%',
-                            tabPanel(h4("The Project"), 
-                                     h5('Is this centered?')
-                                     ),
                             tabPanel(h4("The Coder"), 
-                                     h5()
+                                     h4('Michael Link'),
+                                     fluidRow(
+                                         column(4, ""),
+                                         column(4, img(src='headshot.jpeg', align = "center"))#, height = '140px', width = '80%'))
+                                     ),
+                                     br(),
+                                     br(),
+                                     h5('LinkedIn:'),
+                                     tags$a(href="https://www.linkedin.com/in/data-science-link/", h5("www.linkedin.com/in/data-science-link")),
+                                     h5('Github:'),
+                                     tags$a(href="https://github.com/Data-Science-Link", h5("github.com/Data-Science-Link")),
+                                     h5('Work Portfolio Blog:'),
+                                     tags$a(href="https://nycdatascience.com/blog/author/michael/", h5("nycdatascience.com/blog/author/michael")),
+                                     br(),
+                                     br(),
+                                     h5('Data Science Motto:'),
+                                     h5('“The world is one big data problem.” – Andrew McAfee'),
+                                     h5('"The data problem is no longer such a big problem." - Michael Link')
                                      )
                             ),
                         align = "center"
